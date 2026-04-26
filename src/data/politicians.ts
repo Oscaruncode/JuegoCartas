@@ -1,12 +1,13 @@
 import type { Card } from '../types/card'
 
+
 export const politicians: Card[] = [
   {
     id: 'ivan-cepeda',
     name: 'Iván Cepeda',
     party: 'Pacto Histórico',
     type: 'izquierda',
-    image: '/images/ivan-cepeda.jpg',
+    image: '/images/ivan_cepeda.png',
     stats: { popularidad: 85, propuestas: 78, experiencia: 82, escandalos: 15 },
   },
   {
@@ -14,7 +15,7 @@ export const politicians: Card[] = [
     name: 'Abelardo de la Espriella',
     party: 'Independiente (Derecha)',
     type: 'derecha',
-    image: '/images/abelardo-espriella.jpg',
+    image: '/images/abelardo.png',
     stats: { popularidad: 80, propuestas: 62, experiencia: 45, escandalos: 48 },
   },
   {
@@ -22,7 +23,7 @@ export const politicians: Card[] = [
     name: 'Paloma Valencia',
     party: 'Centro Democrático',
     type: 'derecha',
-    image: '/images/paloma-valencia.jpg',
+    image: '/images/paloma_valencia.png',
     stats: { popularidad: 78, propuestas: 75, experiencia: 80, escandalos: 22 },
   },
   {
@@ -30,7 +31,7 @@ export const politicians: Card[] = [
     name: 'Claudia López',
     party: 'Alianza Verde',
     type: 'centro',
-    image: '/images/claudia-lopez.jpg',
+    image: '/images/claudia_lopez.png',
     stats: { popularidad: 72, propuestas: 82, experiencia: 88, escandalos: 20 },
   },
   {
@@ -38,7 +39,7 @@ export const politicians: Card[] = [
     name: 'Sergio Fajardo',
     party: 'Dignidad y Compromiso',
     type: 'centro',
-    image: '/images/sergio-fajardo.jpg',
+    image: '/images/sergio_fajardo.png',
     stats: { popularidad: 68, propuestas: 85, experiencia: 92, escandalos: 12 },
   },
   {
@@ -46,7 +47,7 @@ export const politicians: Card[] = [
     name: 'Luis Gilberto Murillo',
     party: 'Colombia Renaciente',
     type: 'centro',
-    image: '/images/luis-gilberto-murillo.jpg',
+    image: '/images/luis_murillo.png',
     stats: { popularidad: 65, propuestas: 80, experiencia: 90, escandalos: 8 },
   },
   {
@@ -54,7 +55,7 @@ export const politicians: Card[] = [
     name: 'Miguel Uribe Londoño',
     party: 'Centro Democrático',
     type: 'derecha',
-    image: '/images/miguel-uribe.jpg',
+    image: '/images/miguel_uribe.png',
     stats: { popularidad: 60, propuestas: 74, experiencia: 70, escandalos: 18 },
   },
   {
@@ -62,7 +63,7 @@ export const politicians: Card[] = [
     name: 'Roy Barreras',
     party: 'La Fuerza de la Paz',
     type: 'centro',
-    image: '/images/roy-barreras.jpg',
+    image: '/images/roy_barrera.png',
     stats: { popularidad: 58, propuestas: 88, experiencia: 95, escandalos: 35 },
   },
   {
@@ -70,7 +71,7 @@ export const politicians: Card[] = [
     name: 'Carlos Caicedo',
     party: 'Fuerza Ciudadana',
     type: 'izquierda',
-    image: '/images/carlos-caicedo.jpg',
+    image: '/images/carlos_caicedo.png',
     stats: { popularidad: 55, propuestas: 72, experiencia: 78, escandalos: 25 },
   },
   {
@@ -78,23 +79,15 @@ export const politicians: Card[] = [
     name: 'Clara López',
     party: 'Todos Somos Colombia',
     type: 'izquierda',
-    image: '/images/clara-lopez.jpg',
+    image: '/images/clara_lopez.png',
     stats: { popularidad: 52, propuestas: 84, experiencia: 94, escandalos: 14 },
-  },
-  {
-    id: 'mauricio-liscano',
-    name: 'Mauricio Liscano',
-    party: 'En Marcha',
-    type: 'centro',
-    image: '/images/mauricio-liscano.jpg',
-    stats: { popularidad: 48, propuestas: 70, experiencia: 85, escandalos: 22 },
   },
   {
     id: 'gustavo-matamoros',
     name: 'Gustavo Matamoros',
     party: 'Independiente (Militar r.)',
     type: 'derecha',
-    image: '/images/gustavo-matamoros.jpg',
+    image: '/images/gustavo_matamoros.png',
     stats: { popularidad: 45, propuestas: 65, experiencia: 60, escandalos: 5 },
   },
   {
@@ -102,7 +95,7 @@ export const politicians: Card[] = [
     name: 'Santiago Botero',
     party: 'Independiente',
     type: 'derecha',
-    image: '/images/santiago-botero.jpg',
+    image: '/images/santiago_botero.png',
     stats: { popularidad: 42, propuestas: 58, experiencia: 40, escandalos: 10 },
   },
   {
@@ -110,7 +103,7 @@ export const politicians: Card[] = [
     name: 'Sondra Macollins',
     party: 'Independiente',
     type: 'centro',
-    image: '/images/sondra-macollins.jpg',
+    image: '/images/sandra_macollins.png',
     stats: { popularidad: 40, propuestas: 68, experiencia: 50, escandalos: 12 },
   },
 ]
