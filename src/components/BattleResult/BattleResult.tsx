@@ -67,7 +67,7 @@ export function BattleResult({
         onClick={onContinue}
         className="px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-colors"
       >
-        {isFinal ? 'Ver resultado final' : 'Siguiente ronda →'}
+        {isFinal ? 'Jugar de nuevo' : 'Siguiente ronda →'}
       </button>
     </div>
   )

@@ -13,6 +13,7 @@ function createPlayer(id: 'player' | 'cpu', name: string, hand: Card[]): Player 
 // 🔥 Extensión del estado
 interface ExtendedGameState extends GameState {
   selectedDeck: Card[]
+  popularity: { candidateId: string; totalVotes: number }[]
 }
 
 interface GameActions {
@@ -21,9 +22,12 @@ interface GameActions {
   playRound: () => void
   resetGame: () => void
 
-  // 🆕 nuevas acciones
+  // 🆕 deck
   selectDeckCard: (card: Card) => void
-  confirmDeck: () => void
+  confirmDeck: () => Promise<void>
+
+  // 🆕 ranking
+  fetchPopularity: () => Promise<void>
 }
 
 export const useGameStore = create<ExtendedGameState & GameActions>((set, get) => ({
@@ -35,15 +39,14 @@ export const useGameStore = create<ExtendedGameState & GameActions>((set, get) =
   roundHistory: [],
   selectedCard: null,
 
-  // 🆕 nuevo estado
+  // 🆕 estados nuevos
   selectedDeck: [],
+  popularity: [],
 
-  // 🚀 ahora solo cambia de fase
   startGame: () => {
     set({ phase: 'deckSelection', selectedDeck: [] })
   },
 
-  // 🆕 selección de cartas del usuario
   selectDeckCard: (card) => {
     const { selectedDeck } = get()
 
@@ -57,14 +60,26 @@ export const useGameStore = create<ExtendedGameState & GameActions>((set, get) =
     }
   },
 
-  // 🧠 confirmación del mazo (aquí capturas data)
-  confirmDeck: () => {
+  confirmDeck: async () => {
     const { selectedDeck } = get()
 
     if (selectedDeck.length !== HAND_SIZE) return
 
-    // 🔥 AQUÍ puedes enviar esto a tu backend
-    console.log('Intención de voto:', selectedDeck.map(c => c.name))
+    try {
+      await fetch('http://localhost:3001/api/votes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          candidateIds: selectedDeck.map(c => c.id),
+        }),
+      })
+
+      // 🔥 refresca ranking después de votar
+      await get().fetchPopularity()
+
+    } catch (err) {
+      console.error('Error guardando votos', err)
+    }
 
     const cpuHand = dealHand(shuffleDeck(politicians), HAND_SIZE).hand
 
@@ -76,6 +91,17 @@ export const useGameStore = create<ExtendedGameState & GameActions>((set, get) =
       roundHistory: [],
       selectedCard: null,
     })
+  },
+
+  fetchPopularity: async () => {
+    try {
+      const res = await fetch('http://localhost:3001/api/votes/popularity')
+      const data = await res.json()
+
+      set({ popularity: data })
+    } catch (err) {
+      console.error('Error cargando popularidad', err)
+    }
   },
 
   selectCard: (card) => {
@@ -120,6 +146,7 @@ export const useGameStore = create<ExtendedGameState & GameActions>((set, get) =
       selectedCard: null,
       currentRound: 1,
       selectedDeck: [],
+      popularity: [],
     })
   },
 }))
