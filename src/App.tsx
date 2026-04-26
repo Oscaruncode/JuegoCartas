@@ -25,15 +25,34 @@ function App() {
           <p>🏆 Gana quien acumule más rondas en 4 turnos</p>
         </div>
 
-        <button
-          onClick={() => {
-            setShowRanking(false) // 🔥 reset ranking
-            startGame()
-          }}
-          className="px-10 py-4 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl text-xl transition-colors shadow-lg"
-        >
-          🚀 Comenzar juego
-        </button>
+        {/* 🔥 BOTONES */}
+        <div className="flex flex-col gap-3 items-center">
+          <button
+            onClick={() => {
+              setShowRanking(false)
+              startGame()
+            }}
+            className="px-10 py-4 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl text-xl transition-colors shadow-lg"
+          >
+            🚀 Comenzar juego
+          </button>
+
+          <button
+            onClick={() => setShowRanking(!showRanking)}
+            className="text-sm text-white/60 underline"
+          >
+            {showRanking
+              ? 'Ocultar ranking'
+              : '📊 Ver ranking de popularidad'}
+          </button>
+        </div>
+
+        {/* 🔥 RANKING EN HOME */}
+        {showRanking && (
+          <div className="w-full flex justify-center mt-4">
+            <Ranking />
+          </div>
+        )}
       </div>
     )
   }
@@ -58,7 +77,6 @@ function App() {
         <span className="text-white/40 text-sm">Colombia 2026</span>
       </div>
 
-      {/* 🔥 RESULTADO FINAL */}
       {phase === 'gameover' && (
         <div className="flex flex-col items-center gap-4">
           {gameWinner === null && (
@@ -75,7 +93,6 @@ function App() {
             </div>
           )}
 
-          {/* 🔥 BOTÓN PARA VER RANKING */}
           {!showRanking && (
             <button
               onClick={() => setShowRanking(true)}
@@ -85,7 +102,6 @@ function App() {
             </button>
           )}
 
-          {/* 🔥 RANKING */}
           {showRanking && (
             <div className="mt-2 w-full flex flex-col items-center gap-2">
               <Ranking />
