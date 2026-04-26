@@ -41,9 +41,9 @@ export function Board() {
       <div className="flex flex-col items-center gap-2">
         <p className="text-white/60 text-sm">Cartas de la CPU</p>
         <div className="flex gap-3">
-          {cpu.hand.map((_, i) => (
-            <CardComponent key={i} card={_} faceDown />
-          ))}
+              {cpu.hand.map((card, i) => (
+        <CardComponent key={i} card={card} />
+      ))}
         </div>
       </div>
 
