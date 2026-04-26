@@ -57,10 +57,10 @@ export function CardComponent({ card, selected, onClick, disabled, faceDown, rev
      <div className="mx-2 mt-auto mb-2 bg-black/30 rounded-lg p-1.5 text-[10px] text-white space-y-0.5">
   {revealStats ? (
     <>
-      <div className="flex justify-between">
+      {/* <div className="flex justify-between">
         <span>❤️ Popularidad</span>
         <span className="font-bold">{card.stats.popularidad}</span>
-      </div>
+      </div> */}
       <div className="flex justify-between">
         <span>⚔️ Propuestas</span>
         <span className="font-bold">{card.stats.propuestas}</span>
@@ -76,10 +76,10 @@ export function CardComponent({ card, selected, onClick, disabled, faceDown, rev
     </>
   ) : (
     <>
-      <div className="flex justify-between">
+      {/* <div className="flex justify-between">
         <span>❤️ Popularidad</span>
         <span className="font-bold">?</span>
-      </div>
+      </div> */}
       <div className="flex justify-between">
         <span>⚔️ Propuestas</span>
         <span className="font-bold">?</span>

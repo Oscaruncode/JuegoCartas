@@ -7,7 +7,7 @@ export interface Card {
   type: PoliticalType
   image: string
   stats: {
-    popularidad: number   // HP
+    // popularidad: number   // HP
     propuestas: number    // ataque
     experiencia: number   // defensa
     escandalos: number    // debilidad (resta)
