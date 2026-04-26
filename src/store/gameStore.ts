@@ -6,6 +6,9 @@ import { resolveBattle } from '../logic/battle'
 const HAND_SIZE = 4
 const TOTAL_ROUNDS = 4
 
+// 🔥 URL dinámica (local + prod)
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+
 function createPlayer(id: 'player' | 'cpu', name: string, hand: Card[]): Player {
   return { id, name, deck: [], hand, score: 0 }
 }
@@ -22,11 +25,9 @@ interface GameActions {
   playRound: () => void
   resetGame: () => void
 
-  // 🆕 deck
   selectDeckCard: (card: Card) => void
   confirmDeck: () => Promise<void>
 
-  // 🆕 ranking
   fetchPopularity: () => Promise<void>
 }
 
@@ -39,7 +40,6 @@ export const useGameStore = create<ExtendedGameState & GameActions>((set, get) =
   roundHistory: [],
   selectedCard: null,
 
-  // 🆕 estados nuevos
   selectedDeck: [],
   popularity: [],
 
@@ -66,7 +66,7 @@ export const useGameStore = create<ExtendedGameState & GameActions>((set, get) =
     if (selectedDeck.length !== HAND_SIZE) return
 
     try {
-      await fetch('http://localhost:3001/api/votes', {
+      await fetch(`${API_URL}/api/votes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -95,7 +95,7 @@ export const useGameStore = create<ExtendedGameState & GameActions>((set, get) =
 
   fetchPopularity: async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/votes/popularity')
+      const res = await fetch(`${API_URL}/api/votes/popularity`)
       const data = await res.json()
 
       set({ popularity: data })
