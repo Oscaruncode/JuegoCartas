@@ -14,18 +14,22 @@ Juego de cartas estilo Pokémon con los candidatos a la presidencia de Colombia 
    - **Centro** le gana a **Izquierda**
 6. Gana quien acumule más rondas en 4 turnos
 
-## Políticos incluidos
-
-| Nombre | Partido | Tipo |
-|---|---|---|
-| Gustavo Petro | Pacto Histórico | Izquierda |
-| Federico Gutiérrez | Equipo por Colombia | Derecha |
-| Sergio Fajardo | Independiente | Centro |
-| Carlos Fernando Galán | Nuevo Liberalismo | Centro |
-| Gustavo Bolívar | Colombia Humana | Izquierda |
-| Germán Vargas Lleras | Cambio Radical | Derecha |
-| María Fernanda Cabal | Centro Democrático | Derecha |
-| Francia Márquez | Pacto Histórico | Izquierda |
+Políticos incluidos (Candidatos Oficiales 2026)
+Nombre	Partido	Tipo
+Iván Cepeda	Pacto Histórico	Izquierda
+Abelardo de la Espriella	Independiente	Derecha
+Paloma Valencia	Centro Democrático	Derecha
+Claudia López	Alianza Verde	Centro
+Sergio Fajardo	Dignidad y Compromiso	Centro
+Luis Gilberto Murillo	Colombia Renaciente	Centro-Izquierda (centro)
+Miguel Uribe Londoño	Centro Democrático	Derecha
+Roy Barreras	La Fuerza de la Paz	Centro-Izquierda (centro)
+Carlos Caicedo	Fuerza Ciudadana	Izquierda
+Clara López	Todos Somos Colombia	Izquierda
+Mauricio Lizcano	En Marcha	Centro
+Gustavo Matamoros	Independiente (Militar r.)	Derecha
+Santiago Botero	Independiente	Derecha
+Sondra Macollins	Independiente	Centro-Derecha (centro)
 
 ## Stack
 
