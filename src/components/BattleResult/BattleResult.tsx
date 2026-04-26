@@ -2,7 +2,7 @@ import type { RoundResult } from '../../types/card'
 import { CardComponent } from '../Card/CardComponent'
 
 interface Props {
-  result: RoundResult
+  result?: RoundResult // 👈 ahora opcional
   onContinue: () => void
   isFinal?: boolean
   playerScore: number
@@ -15,7 +15,23 @@ const outcomeText = {
   tie: { msg: 'Empate 🤝', color: 'text-yellow-400' },
 }
 
-export function BattleResult({ result, onContinue, isFinal, playerScore, cpuScore }: Props) {
+export function BattleResult({
+  result,
+  onContinue,
+  isFinal,
+  playerScore,
+  cpuScore,
+}: Props) {
+
+  // 🛑 Protección clave
+  if (!result) {
+    return (
+      <div className="flex flex-col items-center gap-6 text-white/60">
+        <p className="text-lg">Preparando resultado...</p>
+      </div>
+    )
+  }
+
   const { msg, color } = outcomeText[result.winner]
 
   return (
@@ -25,20 +41,26 @@ export function BattleResult({ result, onContinue, isFinal, playerScore, cpuScor
       <div className="flex gap-8 items-center">
         <div className="flex flex-col items-center gap-2">
           <p className="text-white/70 text-sm">Tu carta</p>
-          <CardComponent card={result.playerCard} />
+          <CardComponent card={result.playerCard} revealStats />
           <p className="text-white font-bold">Score: {result.playerScore}</p>
         </div>
+
         <span className="text-white text-3xl font-bold">VS</span>
+
         <div className="flex flex-col items-center gap-2">
           <p className="text-white/70 text-sm">Carta CPU</p>
-          <CardComponent card={result.cpuCard} />
+          <CardComponent card={result.cpuCard} revealStats />
           <p className="text-white font-bold">Score: {result.cpuScore}</p>
         </div>
       </div>
 
       <div className="flex gap-8 text-white text-lg">
-        <span>Tú: <strong className="text-green-400">{playerScore}</strong></span>
-        <span>CPU: <strong className="text-red-400">{cpuScore}</strong></span>
+        <span>
+          Tú: <strong className="text-green-400">{playerScore}</strong>
+        </span>
+        <span>
+          CPU: <strong className="text-red-400">{cpuScore}</strong>
+        </span>
       </div>
 
       <button

@@ -42,7 +42,7 @@ export function Board() {
         <p className="text-white/60 text-sm">Cartas de la CPU</p>
         <div className="flex gap-3">
               {cpu.hand.map((card, i) => (
-        <CardComponent key={i} card={card} />
+        <CardComponent key={i} card={card} revealStats={false}/>
       ))}
         </div>
       </div>
@@ -56,7 +56,7 @@ export function Board() {
             <CardComponent
               key={card.id}
               card={card}
-              selected={selectedCard?.id === card.id}
+              selected={selectedCard?.id === card.id} revealStats={false}
               onClick={() => selectCard(card)}
             />
           ))}
