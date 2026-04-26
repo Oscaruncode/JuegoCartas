@@ -25,6 +25,13 @@ function App() {
           <p>🏆 Gana quien acumule más rondas en 4 turnos</p>
         </div>
 
+<div className="bg-gray-800/60 border border-gray-700 rounded-xl p-3 text-white/60 text-xs max-w-sm w-full leading-relaxed">
+  <p>
+    ℹ️ Este juego es una simulación. Las estadísticas no reflejan la realidad y 
+    los resultados incluyen azar. Las selecciones de los jugadores se usan de 
+    forma anónima para mostrar tendencias dentro del juego (no es una encuesta oficial, son fines academicos).
+  </p>
+</div>
         {/* 🔥 BOTONES */}
         <div className="flex flex-col gap-3 items-center">
           <button

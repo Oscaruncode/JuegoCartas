@@ -20,9 +20,15 @@ export function Ranking() {
 
   return (
     <div className="bg-gray-800 p-5 rounded-2xl text-white w-full max-w-md shadow-lg">
-      <h3 className="text-xl font-bold mb-4 text-center">
+      <h3 className="text-xl font-bold text-center">
         📊 Popularidad de candidatos
       </h3>
+
+      {/* 🔥 DESCRIPCIÓN */}
+      <p className="text-xs text-white/60 text-center mt-2 mb-4 leading-relaxed">
+        Este ranking muestra cuántas veces los jugadores han elegido a cada
+        candidato como parte de sus mazos. No refleja la popularidad real, sino las elecciones dentro del juego. ¡Elige sabiamente! (No es una encuesta oficial, la encuesta tiene fines academicos)
+      </p>
 
       {popularity.length === 0 ? (
         <p className="text-white/60 text-center">Cargando...</p>
