@@ -10,14 +10,23 @@ function createPlayer(id: 'player' | 'cpu', name: string, hand: Card[]): Player 
   return { id, name, deck: [], hand, score: 0 }
 }
 
+// 🔥 Extensión del estado
+interface ExtendedGameState extends GameState {
+  selectedDeck: Card[]
+}
+
 interface GameActions {
   startGame: () => void
   selectCard: (card: Card) => void
   playRound: () => void
   resetGame: () => void
+
+  // 🆕 nuevas acciones
+  selectDeckCard: (card: Card) => void
+  confirmDeck: () => void
 }
 
-export const useGameStore = create<GameState & GameActions>((set, get) => ({
+export const useGameStore = create<ExtendedGameState & GameActions>((set, get) => ({
   phase: 'idle',
   player: createPlayer('player', 'Tú', []),
   cpu: createPlayer('cpu', 'CPU', []),
@@ -26,20 +35,47 @@ export const useGameStore = create<GameState & GameActions>((set, get) => ({
   roundHistory: [],
   selectedCard: null,
 
+  // 🆕 nuevo estado
+  selectedDeck: [],
+
+  // 🚀 ahora solo cambia de fase
   startGame: () => {
-    const deck = shuffleDeck(politicians)
-    const { hand: playerHand, remaining } = dealHand(deck, HAND_SIZE)
-    const { hand: cpuHand } = dealHand(shuffleDeck(politicians), HAND_SIZE)
+    set({ phase: 'deckSelection', selectedDeck: [] })
+  },
+
+  // 🆕 selección de cartas del usuario
+  selectDeckCard: (card) => {
+    const { selectedDeck } = get()
+
+    const exists = selectedDeck.find(c => c.id === card.id)
+
+    if (exists) {
+      set({ selectedDeck: selectedDeck.filter(c => c.id !== card.id) })
+    } else {
+      if (selectedDeck.length >= HAND_SIZE) return
+      set({ selectedDeck: [...selectedDeck, card] })
+    }
+  },
+
+  // 🧠 confirmación del mazo (aquí capturas data)
+  confirmDeck: () => {
+    const { selectedDeck } = get()
+
+    if (selectedDeck.length !== HAND_SIZE) return
+
+    // 🔥 AQUÍ puedes enviar esto a tu backend
+    console.log('Intención de voto:', selectedDeck.map(c => c.name))
+
+    const cpuHand = dealHand(shuffleDeck(politicians), HAND_SIZE).hand
 
     set({
       phase: 'playing',
-      player: createPlayer('player', 'Tú', playerHand),
+      player: createPlayer('player', 'Tú', selectedDeck),
       cpu: createPlayer('cpu', 'CPU', cpuHand),
       currentRound: 1,
       roundHistory: [],
       selectedCard: null,
     })
-    void remaining
   },
 
   selectCard: (card) => {
@@ -78,6 +114,12 @@ export const useGameStore = create<GameState & GameActions>((set, get) => ({
   },
 
   resetGame: () => {
-    set({ phase: 'idle', roundHistory: [], selectedCard: null, currentRound: 1 })
+    set({
+      phase: 'idle',
+      roundHistory: [],
+      selectedCard: null,
+      currentRound: 1,
+      selectedDeck: [],
+    })
   },
 }))

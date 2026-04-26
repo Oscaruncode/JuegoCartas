@@ -33,7 +33,7 @@ export interface RoundResult {
 }
 
 export interface GameState {
-  phase: 'idle' | 'playing' | 'battle' | 'result' | 'gameover'
+  phase: 'idle' | 'deckSelection' | 'playing' | 'battle' | 'result' | 'gameover'
   player: Player
   cpu: Player
   currentRound: number

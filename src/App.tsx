@@ -1,5 +1,6 @@
 import { useGameStore } from './store/gameStore'
 import { Board } from './components/Board/Board'
+import { DeckSelection } from './components/DeckSelection/DeckSelection'
 
 function App() {
   const { phase, player, cpu, startGame } = useGameStore()
@@ -28,6 +29,9 @@ function App() {
       </div>
     )
   }
+  if (phase === 'deckSelection') {
+  return <DeckSelection />
+}
 
   const gameWinner =
     phase !== 'gameover'
