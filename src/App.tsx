@@ -29,7 +29,7 @@ function App() {
   <p>
     ℹ️ Este juego es una simulación. Las estadísticas no reflejan la realidad y 
     los resultados incluyen azar. Las selecciones de los jugadores se usan de 
-    forma anónima para mostrar tendencias dentro del juego (no es una encuesta oficial, son fines academicos).
+    forma anónima para mostrar tendencias politicas de los jugadores(no es una encuesta oficial, fines academicos).
   </p>
 </div>
         {/* 🔥 BOTONES */}

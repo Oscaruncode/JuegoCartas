@@ -23,7 +23,7 @@ export function DeckSelection() {
             • Elige los candidatos que prefieras libremente.
           </li>
           <li>
-            • Tu selección será usada de forma anónima para medir tendencias dentro del juego.
+            • Tu selección será usada de forma anónima para medir tendencias politicas de los jugadores(no es una encuesta oficial, fines academicos)
           </li>
           <li>
             • Este sistema no representa una encuesta oficial ni resultados reales.
