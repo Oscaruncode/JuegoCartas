@@ -93,16 +93,21 @@ export const useGameStore = create<ExtendedGameState & GameActions>((set, get) =
     })
   },
 
-  fetchPopularity: async () => {
-    try {
-      const res = await fetch(`${API_URL}/api/votes/popularity`)
-      const data = await res.json()
+fetchPopularity: async () => {
+  try {
+    const res = await fetch(`${API_URL}/api/votes/popularity`)
+    const data = await res.json()
 
-      set({ popularity: data })
-    } catch (err) {
-      console.error('Error cargando popularidad', err)
-    }
-  },
+    const normalized = data.map((p: any) => ({
+      candidateId: p.candidate_id, // 👈 FIX CLAVE
+      totalVotes: Number(p.totalVotes), // 👈 FIX CLAVE (string → number)
+    }))
+
+    set({ popularity: normalized })
+  } catch (err) {
+    console.error('Error cargando popularidad', err)
+  }
+},
 
   selectCard: (card) => {
     if (get().phase !== 'playing') return
